@@ -35,6 +35,6 @@ class RedisLogstashHandler(logging.Handler):
 
     def createLock(self):
         if self._in_order:
-            super(RedisHandler, self).createLock()
+            super(RedisLogstashHandler, self).createLock()
         else:
             self.lock = None
