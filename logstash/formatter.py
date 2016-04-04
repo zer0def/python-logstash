@@ -48,6 +48,10 @@ class LogstashFormatterBase(logging.Formatter):
     def get_debug_fields(self, record):
         fields = {
             'exc_info': self.format_exception(record.exc_info),
+            'exc_type': record.exc_info[0].__name__,
+            'exc_msg': traceback.format_exception_only(
+                record.exc_info[0], record.exc_info[1]
+            )[-1],
             'lineno': record.lineno,
             'process': record.process,
             'threadName': record.threadName,
